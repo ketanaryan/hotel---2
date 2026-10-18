@@ -26,7 +26,9 @@ CREATE TABLE IF NOT EXISTS public.menu (
     id BIGSERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     price NUMERIC(10, 2) NOT NULL,
+    original_price NUMERIC(10, 2),
     category TEXT NOT NULL DEFAULT 'Main Course',
+    section TEXT NOT NULL DEFAULT 'Main Course',
     description TEXT,
     image TEXT,
     image_url TEXT,
@@ -206,20 +208,20 @@ CREATE POLICY "Allow all inventory_reconciliations" ON public.inventory_reconcil
 -- ----------------------------------------------------------------------------
 -- 7. DEFAULT SEED MENU FOR HOTEL MARQUIS (Pure Veg Multicuisine & Banquets)
 -- ----------------------------------------------------------------------------
-INSERT INTO public.menu (name, price, category, is_veg, is_available, description)
+INSERT INTO public.menu (name, price, category, section, is_veg, is_available, description)
 VALUES
-    ('Paneer Butter Masala', 260.00, 'Main Course', true, true, 'Rich tomato cashew gravy with fresh soft cottage cheese cubes'),
-    ('Dal Tadka', 180.00, 'Main Course', true, true, 'Yellow lentils tempered with cumin, garlic and dried red chilies in desi ghee'),
-    ('Dal Makhani', 220.00, 'Main Course', true, true, 'Slow-cooked black lentils simmered overnight with butter and fresh cream'),
-    ('Veg Kolhapuri', 240.00, 'Main Course', true, true, 'Assorted garden vegetables tossed in spicy red Kolhapuri masala'),
-    ('Butter Naan', 50.00, 'Breads', true, true, 'Soft leavened tandoor bread brushed with melted butter'),
-    ('Butter Roti', 30.00, 'Breads', true, true, 'Whole wheat tandoori roti glazed with butter'),
-    ('Garlic Naan', 70.00, 'Breads', true, true, 'Tandoor bread infused with roasted garlic and fresh coriander'),
-    ('Jeera Rice', 150.00, 'Rice', true, true, 'Aromatic basmati rice tempered with roasted cumin seeds and desi ghee'),
-    ('Veg Dum Biryani', 260.00, 'Rice', true, true, 'Layered saffron basmati rice with marinated vegetables, served with raita'),
-    ('Paneer Tikka', 240.00, 'Starters', true, true, 'Charcoal roasted spiced paneer cubes with capsicum and onions'),
-    ('Crispy Corn Salt & Pepper', 190.00, 'Starters', true, true, 'Golden fried sweet corn tossed with spring onions and crushed pepper'),
-    ('Mineral Water (1L)', 20.00, 'Beverages', true, true, 'Packaged drinking water'),
-    ('Fresh Lime Soda', 60.00, 'Beverages', true, true, 'Sweet, salted or mixed fizzy refresher'),
-    ('Gulab Jamun (2 Pcs)', 60.00, 'Dessert', true, true, 'Warm khoya dumplings soaked in rose cardamom sugar syrup')
+    ('Paneer Butter Masala', 260.00, 'Main Course', 'Main Course', true, true, 'Rich tomato cashew gravy with fresh soft cottage cheese cubes'),
+    ('Dal Tadka', 180.00, 'Main Course', 'Main Course', true, true, 'Yellow lentils tempered with cumin, garlic and dried red chilies in desi ghee'),
+    ('Dal Makhani', 220.00, 'Main Course', 'Main Course', true, true, 'Slow-cooked black lentils simmered overnight with butter and fresh cream'),
+    ('Veg Kolhapuri', 240.00, 'Main Course', 'Main Course', true, true, 'Assorted garden vegetables tossed in spicy red Kolhapuri masala'),
+    ('Butter Naan', 50.00, 'Breads', 'Breads', true, true, 'Soft leavened tandoor bread brushed with melted butter'),
+    ('Butter Roti', 30.00, 'Breads', 'Breads', true, true, 'Whole wheat tandoori roti glazed with butter'),
+    ('Garlic Naan', 70.00, 'Breads', 'Breads', true, true, 'Tandoor bread infused with roasted garlic and fresh coriander'),
+    ('Jeera Rice', 150.00, 'Rice', 'Rice', true, true, 'Aromatic basmati rice tempered with roasted cumin seeds and desi ghee'),
+    ('Veg Dum Biryani', 260.00, 'Rice', 'Rice', true, true, 'Layered saffron basmati rice with marinated vegetables, served with raita'),
+    ('Paneer Tikka', 240.00, 'Starters', 'Starters', true, true, 'Charcoal roasted spiced paneer cubes with capsicum and onions'),
+    ('Crispy Corn Salt & Pepper', 190.00, 'Starters', 'Starters', true, true, 'Golden fried sweet corn tossed with spring onions and crushed pepper'),
+    ('Mineral Water (1L)', 20.00, 'Beverages', 'Beverages', true, true, 'Packaged drinking water'),
+    ('Fresh Lime Soda', 60.00, 'Beverages', 'Beverages', true, true, 'Sweet, salted or mixed fizzy refresher'),
+    ('Gulab Jamun (2 Pcs)', 60.00, 'Dessert', 'Dessert', true, true, 'Warm khoya dumplings soaked in rose cardamom sugar syrup')
 ON CONFLICT DO NOTHING;

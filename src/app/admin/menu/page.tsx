@@ -35,9 +35,19 @@ export default function MenuBuilder() {
 
   const fetchMenu = async () => {
     setLoading(true);
-    const { data, error } = await supabase.from("menu").select("*").order("section");
-    if (error) toast.error("Failed to load menu");
-    else setItems(data || []);
+    const { data, error } = await supabase.from("menu").select("*");
+    if (error) {
+      console.error("Supabase menu fetch error:", error);
+      toast.error("Failed to load menu");
+    } else {
+      const normalized = (data || []).map((item: any) => ({
+        ...item,
+        section: item.section || item.category || "General",
+        image_url: item.image_url || item.image || "/menu/default-food.jpg"
+      }));
+      normalized.sort((a: any, b: any) => (a.section || '').localeCompare(b.section || ''));
+      setItems(normalized);
+    }
     setLoading(false);
   };
 

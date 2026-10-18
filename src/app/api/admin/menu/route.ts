@@ -21,12 +21,14 @@ export async function POST(req: Request) {
     const sanitizeMenuData = (input: any) => {
       if (!input || typeof input !== 'object') return {};
       const allowed: Record<string, any> = {};
-      const validFields = ['name', 'price', 'category', 'description', 'image', 'is_veg', 'is_available', 'prep_time'];
+      const validFields = ['name', 'price', 'category', 'section', 'description', 'image', 'image_url', 'original_price', 'is_veg', 'is_available', 'prep_time'];
       for (const field of validFields) {
         if (input[field] !== undefined) {
           allowed[field] = input[field];
         }
       }
+      if (allowed.section && !allowed.category) allowed.category = allowed.section;
+      if (allowed.category && !allowed.section) allowed.section = allowed.category;
       return allowed;
     };
 
