@@ -1,7 +1,7 @@
 // Staff Authentication Utilities (Edge Runtime Native - Web Crypto API, Zero Node:crypto dependencies)
 import { isOwnerAuthorized, computeHmacSha256, timingSafeEqualStr } from '@/lib/ownerAuth';
 
-const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'white-bliss-secure-key-2026';
+const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'marquis-secure-key-2026';
 
 export function getExpectedCredentials() {
   const user = process.env.ADMIN_USERNAME || 'admin';

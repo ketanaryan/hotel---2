@@ -6,7 +6,7 @@ import { isStaffAuthorized } from '@/lib/staffAuth';
 import { isOwnerAuthorized } from '@/lib/ownerAuth';
 import { TableSection, DEFAULT_TABLE_SECTIONS, extractAllTableNumbers } from '@/lib/tableConfig';
 
-const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'white-bliss-secure-key-2026';
+const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'marquis-secure-key-2026';
 const configPath = path.join(process.cwd(), 'data', 'tables-config.json');
 
 let memorySections: TableSection[] = [...DEFAULT_TABLE_SECTIONS];

@@ -5,7 +5,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder_key';
 const supabaseServerAdmin = createClient(supabaseUrl, supabaseKey);
 
-const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'white-bliss-secure-key-2026';
+const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'marquis-secure-key-2026';
 
 // In-memory rate limiting map for login attempts: ip -> { count: number, firstAttempt: number, lockedUntil?: number }
 const loginAttempts = new Map<string, { count: number; firstAttempt: number; lockedUntil?: number }>();

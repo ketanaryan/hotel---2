@@ -4,7 +4,7 @@ export function verifyTableToken(table: string, token: string | null): boolean {
   if (process.env.NODE_ENV !== 'production' && !token) return true; // Allow dev testing without token
   if (!token || typeof token !== 'string') return false;
   
-  const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'white-bliss-secure-key-2026';
+  const SECRET_KEY = process.env.TABLE_SECRET_KEY || 'marquis-secure-key-2026';
   const cleanTable = String(table || '').trim();
   if (!cleanTable) return false;
 
